@@ -6,4 +6,6 @@ await config({ export: true });
 export default cleanEnv(Deno.env.toObject(), {
   botToken: str(),
   pexelsApi: str(),
+  redisUri: str(),
+  redisPassword: str(),
 });
