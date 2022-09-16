@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer } from "grammy/mod.ts";
 
 import start from "./start.ts";
 import inline from "./inline.ts";

@@ -4,8 +4,8 @@ import { cleanEnv, str } from "envalid";
 await config({ export: true });
 
 export default cleanEnv(Deno.env.toObject(), {
-  botToken: str(),
-  pexelsApi: str(),
-  redisUri: str(),
-  redisPassword: str(),
+  BOT_TOKEN: str(),
+  PEXELS_API: str(),
+  REDIS_URI: str(),
+  REDIS_PASSWORD: str(),
 });
