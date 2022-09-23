@@ -17,6 +17,7 @@ composer.command("start", async (ctx) => {
         .switchInlineCurrent("Search Pexels", "").row()
         .url("Updates", "https://t.me/BotzHub")
         .url("Source", "https://github.com/xditya/PexelsBot"),
+      disable_web_page_preview: true,
     },
   );
   if (ctx.from) await addUser(ctx.from!.id);
