@@ -56,3 +56,44 @@
 //   });
 
 // export default composer;
+
+import { getUsers } from "../database/users_db.ts";
+import { Composer } from "grammy/mod.ts";
+
+import { delay } from "https://deno.land/std@0.121.0/async/delay.ts";
+
+const composer = new Composer();
+
+let isBroadcasting = false;
+
+composer
+  .filter((ctx) => ctx.from?.id === 719195224)
+  .chatType("private")
+  .command("broadcast", async (ctx) => {
+    if (isBroadcasting == true) {
+      return await ctx.reply("Already broadcasting.");
+    }
+    isBroadcasting = true;
+    const text = ctx.message?.text.split(" ").slice(1).join(" ");
+    if (!text) return await ctx.reply("Please provide a message to broadcast.");
+    let done = 0;
+    const reply = await ctx.reply("Please wait, in progress...");
+    const users = await getUsers();
+    for (const user of users) {
+      try {
+        await ctx.api.sendMessage(user, text);
+        done++;
+        await delay(1000);
+      } catch (err) {
+        console.log(`Failed to send message to ${user}. Error: ${err.message}`);
+      }
+    }
+    await ctx.api.editMessageText(
+      ctx.chat!.id,
+      reply.message_id,
+      "Broadcast complete. Sent to " + done + "/" + users.length + "users.",
+    );
+    isBroadcasting = false;
+  });
+
+export default composer;
