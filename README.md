@@ -20,4 +20,5 @@ PRs are always welcome!
 - [Telegram](https://t.me/BotzHub).
 - [Website](https://xditya.me).
 
-> Special thanks to [@ArnabXD](https://github.com/ArnabXD) for helping me with `.ts` and [@dcdunkan](https://github.com/dcdunkan) for all the suggestions!
+> Special thanks to [@ArnabXD](https://github.com/ArnabXD) for helping me with
+> `.ts` and [@dcdunkan](https://github.com/dcdunkan) for all the suggestions!

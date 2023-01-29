@@ -73,9 +73,9 @@ composer
     if (isBroadcasting == true) {
       return await ctx.reply("Already broadcasting.");
     }
-    isBroadcasting = true;
     const text = ctx.message?.text.split(" ").slice(1).join(" ");
     if (!text) return await ctx.reply("Please provide a message to broadcast.");
+    isBroadcasting = true;
     let done = 0;
     const reply = await ctx.reply("Please wait, in progress...");
     const users = await getUsers();
